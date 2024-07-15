@@ -10,14 +10,6 @@ TorchKit is a custom library for PyTorch neural networks, designed to simplify w
 - Plotting of R² score (for regression)
 - Metrics method to easily evaluate model performance
 
-## Installation
-
-To install TorchKit, use the following command:
-
-```bash
-pip install torchkit
-```
-
 ## Usage
 
 1. **Inherit from TorchKit classes:**
@@ -46,7 +38,7 @@ pip install torchkit
    ```python
    model.compile(
        loss_function=nn.MSELoss(),
-       optimizer=optim.Adam(model.parameters(), lr=0.001),
+       optimizer=optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4),
        learning_rate_scheduler=optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1),
        gradient_clip=1.0,
        task='regression'
@@ -97,7 +89,7 @@ Here's a complete example of using TorchKit for image classification:
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchkit.image_classifier import ImageModel
+from TorchKit.ImageClassifier import ImageModel
 
 class YourCustomModel(ImageModel):
     def __init__(self):
@@ -131,6 +123,9 @@ history = model.fit(
     train_loader=train_loader,
     val_loader=val_loader
 )
+
+model.plot_accuracies()
+model.plot_losses()
 ```
 
 ## Dependencies
@@ -138,12 +133,3 @@ history = model.fit(
 - PyTorch
 - Matplotlib (for plotting)
 
-## Troubleshooting
-
-If you encounter any issues, please refer to the following common problems and solutions:
-
-- **Issue: Model training is slow.**
-  - Solution: Ensure you are using GPU acceleration (CUDA) if available.
-
-- **Issue: Loss/accuracy plots are not displaying correctly.**
-  - Solution: Make sure you have Matplotlib installed and correctly configured.
