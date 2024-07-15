@@ -117,8 +117,6 @@ class TabularModel(nn.Module):
         inputs, labels = inputs.to(device), labels.to(device)
         if task == 'classification':
             out = self(inputs)
-            out = out.view(-1)
-            labels = labels.float().view_as(out)
             loss = F.cross_entropy(out, labels)
         elif task == 'regression':
             out = self(inputs).squeeze()
@@ -398,5 +396,3 @@ class TabularModel(nn.Module):
             plt.show()
         else:
             print("R-squared plot is only available for regression tasks.")
-
-
