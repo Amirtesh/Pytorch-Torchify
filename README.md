@@ -1,18 +1,149 @@
-# Pytorch-TorchKit
-Custom library for pytorch neural networks when working with image data or tabular data(supervised learning) with keras like compile and fit methods.
+# TorchKit
 
-Contains features like learning rate scheduler,gradient clipping, plotting losses and accuracy(in classification) and r2_score(for regression),metrics method with model to get accuracy,f1,precision for classification and mean squared error,root mean squared error,mean absolute error,r2_score for regression to evaluate on a validation dataset easily without having to predict and get required metrics manually.
+TorchKit is a custom library for PyTorch neural networks, designed to simplify working with image data and tabular data (supervised learning). It provides Keras-like `compile` and `fit` methods, as well as features like learning rate scheduling, gradient clipping, and plotting of losses and accuracy. Additionally, it includes methods for evaluating metrics like accuracy, F1 score, precision, mean squared error (MSE), root mean squared error (RMSE), mean absolute error (MAE), and R² score.
 
-# Usage:
+## Features
 
-1.While creating your model class just inherit from TorchKit.ImageClassifier.ImageModel when working with image data or from TorchKit.TabularData.TabularModel when working with tabular data(supervised learning). When working with tabular data once you have made the train and test splits make sure to create a train and test TensorDataset and dataloader with a batch size of your size.  
+- Learning rate scheduler
+- Gradient clipping
+- Plotting of losses and accuracy (for classification)
+- Plotting of R² score (for regression)
+- Metrics method to easily evaluate model performance
 
-2.Create an instance of your model.  
+## Installation
 
-3.Use compile method to pass in loss function,optimizer,learning_rate_scheduler,gradient clip. When using TabularModel an additional parameters called task is present which is by default set to 'classification'.  
+To install TorchKit, use the following command:
 
-4.Use fit method to pass in number of epochs,train and validation loaders. This is common for both ImageModel and TabularModel. If you want to visualize the loss,accuracy and r2_score plots, make sure to create a variable of your choice to which fit method is assigned(For example, history=model.fit(...)). Note that loss plot is common for both TabulatModel and ImageModel but accuracy plot of validation loader is only for ImageModel and TabularModel when task is set to 'classification'. r2_score plot is present only in TabularModel when task is 'regression'.  
+```bash
+pip install torchkit
+```
 
-5.Use predict method to make predictions either on a tensor,a dataset or a dataloader.  
+## Usage
 
-6.Use metrics method by passing in a dataset. This return accuracy,f1 and precision of model's performance on the dataset in case of ImageModel and in TabularModel when task is 'classfication'(order of variables returned- accuracy,f1_score,precision). In TabularModel with task as 'regression' this method returns mean squared error,root mean squared error,mean absolute error and r2_score in order.  
+1. **Inherit from TorchKit classes:**
+   - When working with image data, inherit from `TorchKit.ImageClassifier.ImageModel`.
+   - When working with tabular data, inherit from `TorchKit.TabularData.TabularModel`.
+
+2. **Create an instance of your model:**
+
+   ```python
+   model = YourCustomModel()
+   ```
+
+3. **Compile the model:**
+
+   ```python
+   model.compile(
+       loss_function=nn.CrossEntropyLoss(),
+       optimizer=optim.Adam(model.parameters(), lr=0.001),
+       learning_rate_scheduler=optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1),
+       gradient_clip=1.0
+   )
+   ```
+
+   For `TabularModel`, you can specify the task (default is 'classification'):
+
+   ```python
+   model.compile(
+       loss_function=nn.MSELoss(),
+       optimizer=optim.Adam(model.parameters(), lr=0.001),
+       learning_rate_scheduler=optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1),
+       gradient_clip=1.0,
+       task='regression'
+   )
+   ```
+
+4. **Fit the model:**
+
+   ```python
+   history = model.fit(
+       epochs=10,
+       train_loader=train_loader,
+       val_loader=val_loader
+   )
+   ```
+
+   To visualize the loss, accuracy, and R² score plots, make sure to create a variable for the fit method:
+
+   ```python
+   history = model.fit(...)
+   ```
+
+5. **Make predictions:**
+
+   ```python
+   predictions = model.predict(data_loader)
+   ```
+
+6. **Evaluate metrics:**
+
+   For `ImageModel` and `TabularModel` (classification):
+
+   ```python
+   accuracy, f1_score, precision = model.metrics(dataset)
+   ```
+
+   For `TabularModel` (regression):
+
+   ```python
+   mse, rmse, mae, r2_score = model.metrics(dataset)
+   ```
+
+## Example
+
+Here's a complete example of using TorchKit for image classification:
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torchkit.image_classifier import ImageModel
+
+class YourCustomModel(ImageModel):
+    def __init__(self):
+        super(YourCustomModel, self).__init__()
+        self.conv1 = nn.Conv2d(3, 16, 3, 1)
+        self.conv2 = nn.Conv2d(16, 32, 3, 1)
+        self.fc1 = nn.Linear(32*6*6, 128)
+        self.fc2 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = nn.ReLU()(x)
+        x = self.conv2(x)
+        x = nn.ReLU()(x)
+        x = nn.MaxPool2d(2)(x)
+        x = torch.flatten(x, 1)
+        x = self.fc1(x)
+        x = nn.ReLU()(x)
+        x = self.fc2(x)
+        return x
+
+model = YourCustomModel()
+model.compile(
+    loss_function=nn.CrossEntropyLoss(),
+    optimizer=optim.Adam(model.parameters(), lr=0.001),
+    learning_rate_scheduler=optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1),
+    gradient_clip=1.0
+)
+history = model.fit(
+    epochs=10,
+    train_loader=train_loader,
+    val_loader=val_loader
+)
+```
+
+## Dependencies
+
+- PyTorch
+- Matplotlib (for plotting)
+
+## Troubleshooting
+
+If you encounter any issues, please refer to the following common problems and solutions:
+
+- **Issue: Model training is slow.**
+  - Solution: Ensure you are using GPU acceleration (CUDA) if available.
+
+- **Issue: Loss/accuracy plots are not displaying correctly.**
+  - Solution: Make sure you have Matplotlib installed and correctly configured.
