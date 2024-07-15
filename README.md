@@ -88,7 +88,6 @@ Here's a complete example of using TorchKit for image classification:
 ```python
 import torch
 import torch.nn as nn
-import torch.optim as optim
 from TorchKit.ImageClassifier import ImageModel
 
 class YourCustomModel(ImageModel):
@@ -114,8 +113,8 @@ class YourCustomModel(ImageModel):
 model = YourCustomModel()
 model.compile(
     loss_function=nn.CrossEntropyLoss(),
-    optimizer=optim.Adam(model.parameters(), lr=0.001),
-    learning_rate_scheduler=optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1),
+    optimizer=torch.optim.Adam(model.parameters(), lr=0.001),
+    learning_rate_scheduler=torch.optim.lr_scheduler.OneCycleLR(optimizer, epocks=10, steps_per_epoch=len(train_loader), max_lr=0.001),
     gradient_clip=1.0
 )
 history = model.fit(
