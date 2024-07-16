@@ -12,6 +12,10 @@ TorchKit is a custom library for PyTorch neural networks, designed to simplify w
 - Plotting of R² score (for regression)
 - Metrics method to easily evaluate model performance
 
+## Installation
+
+To use this library, download the TorchKit folder containing the ImageClassifier.py and TabularData.py files. Place the folder in site packages folder of your python environment.
+
 ## Usage
 
 1. **Inherit from TorchKit classes:**
