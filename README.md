@@ -34,7 +34,7 @@ To use this library, download the TorchKit folder containing the ImageClassifier
    model.compile(
        loss_function=nn.CrossEntropyLoss(),
        optimizer=optim.Adam(model.parameters(), lr=0.001),
-       learning_rate_scheduler=optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1),
+       learning_rate_scheduler=optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.001, epochs=10, steps_per_epoch=len(train_loader)),
        gradient_clip=1.0
    )
    ```
@@ -45,7 +45,7 @@ To use this library, download the TorchKit folder containing the ImageClassifier
    model.compile(
        loss_function=nn.MSELoss(),
        optimizer=optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4),
-       learning_rate_scheduler=optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1),
+       learning_rate_scheduler=optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.001, epochs=10, steps_per_epoch=len(train_loader)),
        gradient_clip=1.0,
        task='regression'
    )
