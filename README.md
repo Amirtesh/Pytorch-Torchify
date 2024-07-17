@@ -148,13 +148,18 @@ To use this library, download the TorchKit folder containing the ImageClassifier
    
    train_dataset = CIFAR10(root='data/', train=True, transform=ToTensor(), download=True)
    val_dataset = CIFAR10(root='data/', train=False, transform=ToTensor())
+      
    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
    val_loader = DataLoader(val_dataset, batch_size=32)
+      
    model = CustomImageModel()
+      
    optimizer = Adam(model.parameters(), lr=0.001)
    scheduler = OneCycleLR(optimizer, max_lr=0.01, steps_per_epoch=len(train_loader), epochs=10)
+      
    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
    model.to(device)
+      
    history = fit_one_cycle(
        epochs=10,
        model=model,
@@ -216,15 +221,21 @@ To use this library, download the TorchKit folder containing the ImageClassifier
    
    X, y = make_regression(n_samples=1000, n_features=10, noise=0.1)
    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2)
+      
    train_dataset = TensorDataset(torch.tensor(X_train, dtype=torch.float32), torch.tensor(y_train, dtype=torch.float32))
-   val_dataset = TensorDataset(torch.tensor(X_val, dtype=torch.float32), torch.tensor(y_val, dtype=torch.float
+   val_dataset = TensorDataset(torch.tensor(X_val, dtype=torch.float32), torch.tensor(y_val, dtype=torch.float))
+      
    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
    val_loader = DataLoader(val_dataset, batch_size=32)
+      
    model = CustomTabularModel()
+      
    optimizer = Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
    scheduler = OneCycleLR(optimizer, max_lr=0.01, steps_per_epoch=len(train_loader), epochs=10)
+      
    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
    model.to(device)
+      
    history = fit_one_cycle(
        epochs=10,
        model=model,
