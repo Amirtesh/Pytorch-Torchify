@@ -235,7 +235,7 @@ To use this library, download the TorchKit folder containing the ImageClassifier
        device=device
    )
    ```
-
+   Note that when using this method you will not be able to use the plotting, predict and metrics function since you will be inheriting from nn.Module.
 
       
 
