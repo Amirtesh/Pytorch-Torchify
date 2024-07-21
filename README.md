@@ -1,6 +1,6 @@
-# TorchKit
+# TorchNex
 
-TorchKit is a custom library for PyTorch neural networks, designed to simplify working with image data and tabular data (supervised learning). It provides Keras-like `compile` and `fit` methods, as well as features like learning rate scheduling, gradient clipping, and plotting of losses and accuracy. Additionally, it includes methods for evaluating metrics like accuracy, F1 score, precision, mean squared error (MSE), root mean squared error (RMSE), mean absolute error (MAE), and R² score.  
+TorchNex is a custom library for PyTorch neural networks, designed to simplify working with image data and tabular data (supervised learning). It provides Keras-like `compile` and `fit` methods, as well as features like learning rate scheduling, gradient clipping, and plotting of losses and accuracy. Additionally, it includes methods for evaluating metrics like accuracy, F1 score, precision, mean squared error (MSE), root mean squared error (RMSE), mean absolute error (MAE), and R² score.  
 
 (Works with python 3.10 and above)
 
@@ -14,7 +14,7 @@ TorchKit is a custom library for PyTorch neural networks, designed to simplify w
 
 ## Installation
 
-To use this library, download the TorchKit folder containing the ImageClassifier.py and TabularData.py files. Place the folder in site packages folder of your python environment.
+Use command ```pip install torchnex``` to install the library.
 
 ## Usage
 
