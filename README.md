@@ -92,6 +92,12 @@ Use command ```pip install torchify``` to install the library.
    ```python
    model.evaluate(data_loader)
    ```
+
+  8. **Custom train and validation steps:**
+
+     The ```fit_one_cycle``` method can be used via ```from Torchify.VisionNet import fit_one_cycle``` or ```from Torchify.TabularNet import fit_one_cycle``` to introduce custom train and
+     validation steps while creating a model class. All features such as learning_rate scheduling, gradient clipping can be passed into these methods too. When using ```fit_one_cycle```
+     from TabularNet, remember to pass in the task parameter while calling method after creating an instance of your class.
       
 ## Example
 
