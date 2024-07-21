@@ -1,24 +1,22 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='torchkit',
+    name='torchnex',
     version='0.1.0',
-    description='A Keras-like API for PyTorch for image and tabular data.',
+    description='A Keras-like API for PyTorch with support for image and tabular data',
     author='Your Name',
     author_email='your.email@example.com',
-    url='https://github.com/Amirtesh/Pytorch-TorchKit',
+    url='https://github.com/Amirtesh/TorchNex',
     packages=find_packages(),
     install_requires=[
-        'torch',
-        'torchvision',
+        'torch>=1.10.0',
+        'numpy',
         'matplotlib',
-        'numpy'
-       ],
+    ],
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
     ],
 )
