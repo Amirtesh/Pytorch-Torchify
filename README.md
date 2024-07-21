@@ -19,8 +19,8 @@ Use command ```pip install torchnex``` to install the library.
 ## Usage
 
 1. **Inherit from TorchKit classes:**
-   - When working with image data, inherit from `TorchKit.ImageClassifier.ImageModel`.
-   - When working with tabular data, inherit from `TorchKit.TabularData.TabularModel`.
+   - When working with image data, inherit from `TorchNex.ImageClassifier.ImageModel`.
+   - When working with tabular data, inherit from `TorchNex.TabularData.TabularModel`.
 
 2. **Create an instance of your model:**
 
