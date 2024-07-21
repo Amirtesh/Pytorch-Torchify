@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='torchnex',
+    name='torchit',
     version='0.1.0',
     description='A Keras-like API for PyTorch with support for image and tabular data',
     author='Your Name',
