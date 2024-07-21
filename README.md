@@ -87,7 +87,7 @@ Use command ```pip install torchify``` to install the library.
    mse, rmse, mae, r2_score = model.metrics(dataset)
    ```
 
-7. **Use ```evaluate``` method to get loss and accuracy/mse for validation dataloader:**
+ 7. **Use ```evaluate``` method to get loss and accuracy/mse for validation dataloader:**
 
    ```python
    model.evaluate(data_loader)
