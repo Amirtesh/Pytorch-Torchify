@@ -101,7 +101,7 @@ Use command ```pip install torchify``` to install the library.
       
 ## Example
 
-Here's a complete example of using TorchKit for image classification:
+Here's a complete example of using Torchify for image classification:
 
 ```python
 import torch
