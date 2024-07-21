@@ -95,7 +95,7 @@ Here's a complete example of using TorchKit for image classification:
 ```python
 import torch
 import torch.nn as nn
-from Torchify.ImageClassifier import ImageModel
+from Torchify.VisionNet import ImageModel
 
 class YourCustomModel(ImageModel):
     def __init__(self):
