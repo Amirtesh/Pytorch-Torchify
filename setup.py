@@ -1,12 +1,11 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='torchit',
+    name='torchify',
     version='0.1.0',
     description='A Keras-like API for PyTorch with support for image and tabular data',
-    author='Your Name',
-    author_email='your.email@example.com',
-    url='https://github.com/Amirtesh/TorchNex',
+    author='Amirtesh Raghuram',
+    url='https://github.com/Amirtesh/Pytorch-Torchify/tree/main',
     packages=find_packages(),
     install_requires=[
         'torch>=1.10.0',
