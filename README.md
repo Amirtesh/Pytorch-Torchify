@@ -90,6 +90,8 @@ Use command ```pip install torchify``` to install the library.
 
 
 7. **Use ```performance``` method to get valuable metrics on the testing or validation data:**
+
+   
    Classification-Accuracy,F1-Score,Precision,Recall
 
    
