@@ -56,8 +56,9 @@ Use command ```pip install torchify``` to install the library.
    ```python
    history = model.fit(
        epochs=10,
-       train_loader=train_loader,
-       val_loader=val_loader
+       train_dataset=train_ds,
+       val_dataset=valid_ds,
+       batch_size=32
    )
    ```
 
@@ -87,17 +88,12 @@ Use command ```pip install torchify``` to install the library.
    mse, rmse, mae, r2_score = model.metrics(dataset)
    ```
 
-7. **Use ```evaluate``` method to get loss and accuracy/mse for validation dataloader:**
+
+7. **Use ```performance``` method to get valuable metrics on the testing or validation data:**
 
    ```python
-   model.evaluate(data_loader)
+   model.performace(test_ds)
    ```
-
-8. **Custom train and validation steps:**
-
-     The ```fit_one_cycle``` method can be used via ```from Torchify.VisionNet import fit_one_cycle``` or ```from Torchify.TabularNet import fit_one_cycle``` to introduce custom train and
-     validation steps while creating a model class. All features such as learning_rate scheduling, gradient clipping can be passed into these methods too. When using ```fit_one_cycle```
-     from TabularNet, remember to pass in the task parameter while calling method after creating an instance of your class.
       
 ## Example
 
@@ -137,15 +133,15 @@ model.compile(
 )
 history = model.fit(
     epochs=10,
-    train_loader=train_loader,
-    val_loader=val_loader
+    train_dataset=train_ds,
+    val_dataset=valid_ds,
+    batch_size=32
 )
 
 model.plot_accuracies()
 model.plot_losses()
 
-print(model.evaluate(val_loader))
-print(model.metrics(test_loader))
+print(model.performance(test_loader))
 ```
 
 ## Dependencies
