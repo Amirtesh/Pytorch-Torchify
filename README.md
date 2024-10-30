@@ -19,7 +19,7 @@ Use command ```pip install torchify``` to install the library.
 ## Usage
 
 1. **Inherit from TorchKit classes:**
-   - When working with image data, inherit from `Torchify.VisionNet.ImageModel`.
+   - When working with image data, inherit from `Torchify.VisionNet.ImageClassificationModel`.
    - When working with tabular data, inherit from `Torchify.TabularData.TabularModel`.
 
 2. **Create an instance of your model:**
@@ -108,9 +108,9 @@ Here's a complete example of using Torchify for image classification:
 ```python
 import torch
 import torch.nn as nn
-from Torchify.VisionNet import ImageModel
+from Torchify.VisionNet import ImageClassificationModel
 
-class YourCustomModel(ImageModel):
+class YourCustomModel(ImageClassificationModel):
     def __init__(self):
         super(YourCustomModel, self).__init__()
         self.conv1 = nn.Conv2d(3, 16, 3, 1)
