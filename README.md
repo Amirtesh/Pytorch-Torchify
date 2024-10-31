@@ -75,7 +75,7 @@ Use command ```pip install torchify``` to install the library.
    ```
 
 
-7. **Use ```performance``` method to get valuable metrics on the testing or validation data:**
+7. **Use ```performance``` method to evaluate model's performance on unseen data with valuable metrics:**
 
    
    Classification-Accuracy,F1-Score,Precision,Recall
