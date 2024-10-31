@@ -74,20 +74,6 @@ Use command ```pip install torchify``` to install the library.
    predictions = model.predict(data_loader)
    ```
 
-6. **Evaluate metrics:**
-
-   For `ImageModel` and `TabularModel` (classification):
-
-   ```python
-   accuracy, f1_score, precision = model.metrics(dataset)
-   ```
-
-   For `TabularModel` (regression):
-
-   ```python
-   mse, rmse, mae, r2_score = model.metrics(dataset)
-   ```
-
 
 7. **Use ```performance``` method to get valuable metrics on the testing or validation data:**
 
@@ -98,7 +84,8 @@ Use command ```pip install torchify``` to install the library.
    Regression-Mean Squared Error,Root Mean Squared Error,Mean Absolute Error, R2
 
    ```python
-   model.performace(test_ds)
+   accuracy,f1,precision,recall = model.performace(test_ds) #classification
+   mse,rmse,mae,r2 = model.performance(test_ds) #regression
    ```
       
 ## Example
