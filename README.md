@@ -4,6 +4,7 @@
 Torchify is a custom library for PyTorch neural networks, designed to simplify working with image data and tabular data (supervised learning). It provides Keras-like `compile` and `fit` methods, as well as features like learning rate scheduling, gradient clipping, and plotting of losses and accuracy. Additionally, it includes methods for evaluating metrics like accuracy, F1 score, precision, recall, mean squared error (MSE), root mean squared error (RMSE), mean absolute error (MAE), and R² score.  
 
 (Works with python 3.10 and above)
+
 View on PyPi - Torchify[https://pypi.org/project/torchify/]
 
 ## Features
