@@ -6,7 +6,7 @@ Torchify is a custom library for PyTorch neural networks, designed to simplify w
 (Works with python 3.10 and above)  
 
 
-View on PyPi - Torchify[https://pypi.org/project/torchify/]
+[View on PyPi - Torchify](https://pypi.org/project/torchify/)
 
 ## Features
 
